@@ -75,9 +75,34 @@ class Matrix{
         return findDiterminent(matrix);
     }
 
+    private int getSign(int index){
+        if(index%2==0) return 1;
+        return -1;
+    }
+
+    private int [][] getCofficentMatrix(int[][] totalMatrix,int index){
+        int[][] resultMatrix = new int[totalMatrix.length-1][totalMatrix.length-1];
+        for(int rowCounter=1; rowCounter<totalMatrix.length; rowCounter++){
+            for(int columnCounter=0; columnCounter<totalMatrix.length; columnCounter++){
+                if(columnCounter>index)
+                   resultMatrix[rowCounter-1][columnCounter-1]=totalMatrix[rowCounter][columnCounter];
+                 else if(columnCounter<index)
+                    resultMatrix[rowCounter-1][columnCounter]=totalMatrix[rowCounter][columnCounter];
+            }
+        }
+        return resultMatrix;
+    }
+
     private int findDiterminent(int [][] currentMatrix){
-        if(currentMatrix.length == 2)
+        int result=0,signForPosition;
+        if(currentMatrix.length==1) return currentMatrix[0][0];
+        if(currentMatrix.length==2)
             return currentMatrix[0][0]*currentMatrix[1][1] - currentMatrix[0][1]*currentMatrix[1][0];
-        return 0;
+        for(int index=0;index<currentMatrix.length;index++){
+            signForPosition = getSign(index);
+            int [][] cofficentMatrix = getCofficentMatrix(currentMatrix,index);
+            result += signForPosition * currentMatrix[0][index]*findDiterminent(cofficentMatrix);
+        }
+        return(result);
     }
 }

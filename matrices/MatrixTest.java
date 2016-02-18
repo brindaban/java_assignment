@@ -93,6 +93,15 @@ public class MatrixTest {
     }
 
     @Test
+    public void findDeterminentOfOneCrossOneMatrix(){
+        int [] data = {4};
+
+        Matrix myMatrix = new Matrix(1,1,data);
+        int result = myMatrix.diterminent();
+        assertEquals(4,result);
+    }
+
+    @Test
     public void findDeterminentOfTwoCrossTwoMatrix(){
         int [] data = {1,2,3,4};
 
