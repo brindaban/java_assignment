@@ -127,4 +127,29 @@ public class MatrixTest {
         int result = myMatrix.diterminent();
         assertEquals(20,result);
     }
+
+    @Test
+    public void transposeOfATwoCrossTwoMatrix(){
+        int [] data = {1,2,3,4};
+        Matrix myMatrix = new Matrix(2,2,data);
+        Matrix transposeOfMyMatrix = myMatrix.transpose();
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(1,0,0));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(3,0,1));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(2,1,0));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(4,1,1));
+    }
+
+    @Test
+    public void transposeOfAThreeCrossTwoMatrix(){
+        int [] data = {1,2,3,4,5,6};
+        Matrix myMatrix = new Matrix(3,2,data);
+        Matrix transposeOfMyMatrix = myMatrix.transpose();
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(1,0,0));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(3,0,1));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(5,0,2));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(2,1,0));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(4,1,1));
+        assertTrue(transposeOfMyMatrix.checkDataOfThePosition(6,1,2));
+
+    }
 }

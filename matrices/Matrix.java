@@ -105,4 +105,16 @@ class Matrix{
         }
         return(result);
     }
+
+    public Matrix transpose(){
+        int [] resultMatrix = new int[row*column];
+        int counter = 0;
+        for(int columnCounter = 0; columnCounter<column; columnCounter++){
+            for(int rowCounter = 0; rowCounter<row; rowCounter++){
+                resultMatrix[counter] = matrix[rowCounter][columnCounter];
+                counter++;
+            }
+        }
+        return new Matrix(column,row,resultMatrix);
+    }
 }
