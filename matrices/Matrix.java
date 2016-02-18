@@ -5,25 +5,18 @@ class Matrix{
     private int column;
     private int [][] matrix;
 
-    private Matrix(int rowSize,int columnSize){
+    public Matrix(int rowSize,int columnSize,int[]data){
         row = rowSize;
         column = columnSize;
         matrix = new int[row][column];
+        storeData(data);
     }
 
-    public static Matrix allocateMatrix(int rowSize,int columnSize){
-        return new Matrix(rowSize,columnSize);
-    }
-
-    // public void storeData(int [][] data){
-    //     matrix = data;
-    // }
-
-    public void storeData(int [] data){
+    private void storeData(int [] data){
         int rowCounter = 0;
         int columnCounter = 0;
         int counter = 0;
-        while(rowCounter<row){
+        while(counter<data.length){
             matrix[rowCounter][columnCounter] = data[counter];
             counter++;
             columnCounter++;
@@ -37,4 +30,25 @@ class Matrix{
     public int[][] getMatrix(){
         return matrix;
     }
+
+    public Matrix addMatrix(int[][] addent){
+        int []resultData = new int[row * column];
+        int rowCounter = 0;
+        int columnCounter = 0;
+        int counter = 0;
+        while(rowCounter<row){
+            resultData[counter] = matrix[rowCounter][columnCounter]+addent[rowCounter][columnCounter];
+            columnCounter++;
+            counter++;
+            if(columnCounter==column){
+                columnCounter = 0;
+                rowCounter++;
+            }
+        }
+        return new Matrix(row,column,resultData);
+    }
+
+    // public Matrix multiplyMatrix(int [][] multiplier){
+    //     int [] resultData = new
+    // }
 }
