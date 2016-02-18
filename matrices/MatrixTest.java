@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -18,10 +19,10 @@ public class MatrixTest {
 
 
 
-        assertEquals(9,mySecondMatrix.getDataOfThePosition(0,0));
-        assertEquals(5,mySecondMatrix.getDataOfThePosition(1,1));
-        assertEquals(9,myFirstMatrix.getDataOfThePosition(2,2));
-        assertEquals(4,myFirstMatrix.getDataOfThePosition(1,0));
+        assertTrue(mySecondMatrix.checkDataOfThePosition(9,0,0));
+        assertTrue(mySecondMatrix.checkDataOfThePosition(5,1,1));
+        assertTrue(myFirstMatrix.checkDataOfThePosition(9,2,2));
+        assertTrue(myFirstMatrix.checkDataOfThePosition(4,1,0));
     }
 
     @Test
@@ -36,14 +37,31 @@ public class MatrixTest {
 
         Matrix resultMatrix = myFirstMatrix.addMatrix(mySecondMatrix);
 
-        assertEquals(10,resultMatrix.getDataOfThePosition(0,0));
-        assertEquals(10,resultMatrix.getDataOfThePosition(1,0));
-        assertEquals(10,resultMatrix.getDataOfThePosition(2,2));
-        assertEquals(1,myFirstMatrix.getDataOfThePosition(0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(10,0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(10,1,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(10,2,2));
+        assertTrue(myFirstMatrix.checkDataOfThePosition(1,0,0));
     }
 
     @Test
-    public void multiplyTwoMatrix(){
+    public void multiplyTwoMatrixOfTwoCrossTwo(){
+        int row = 2;
+        int column = 2;
+        int [] firstData = {1,2,3,4};
+        int [] secondData = {2,3,1,6};
+
+        Matrix myFirstMatrix = new Matrix(row,column,firstData);
+        Matrix mySecondMatrix = new Matrix(row,column,secondData);
+
+        Matrix resultMatrix = myFirstMatrix.multiplyMatrix(mySecondMatrix);
+
+        assertTrue(resultMatrix.checkDataOfThePosition(4,0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(15,0,1));
+        assertTrue(resultMatrix.checkDataOfThePosition(10,1,0));
+    }
+
+    @Test
+    public void multiplyTwoMatrixOfThreeCrossThree(){
         int row = 3;
         int column = 3;
         int [] firstData = {1,2,3,4,6,7,5,2,1};
@@ -54,12 +72,23 @@ public class MatrixTest {
 
         Matrix resultMatrix = myFirstMatrix.multiplyMatrix(mySecondMatrix);
 
-        assertEquals(35,resultMatrix.getDataOfThePosition(0,0));
-        assertEquals(20,resultMatrix.getDataOfThePosition(0,1));
-        assertEquals(93,resultMatrix.getDataOfThePosition(1,0));
-
-
-
+        assertTrue(resultMatrix.checkDataOfThePosition(35,0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(20,0,1));
+        assertTrue(resultMatrix.checkDataOfThePosition(93,1,0));
     }
 
+    @Test
+    public void multiplyTwoMatrixOfDifferentOrder(){
+        int [] firstData = {1,2,3,2,4,1};
+        int [] secondData = {1,3,2,2,3,1};
+
+        Matrix myFirstMatrix = new Matrix(2,3,firstData);
+        Matrix mySecondMatrix = new Matrix(3,2,secondData);
+
+        Matrix resultMatrix = myFirstMatrix.multiplyMatrix(mySecondMatrix);
+
+        assertTrue(resultMatrix.checkDataOfThePosition(14,0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(10,0,1));
+        assertTrue(resultMatrix.checkDataOfThePosition(13,1,0));
+    }
 }

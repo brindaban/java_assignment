@@ -27,8 +27,8 @@ class Matrix{
         }
     }
 
-    public int getDataOfThePosition(int row,int column){
-        return matrix[row][column];
+    public boolean checkDataOfThePosition(int expectedNo,int rowPosition,int columnPosition){
+        return expectedNo == matrix[rowPosition][columnPosition];
     }
 
     public Matrix addMatrix(Matrix addent){
@@ -49,14 +49,14 @@ class Matrix{
     }
 
     public Matrix multiplyMatrix(Matrix multiplier){
-        int [] resultData = new int[row * column];
+        int [] resultData = new int[row * multiplier.column];
         int firstMatrixColumncounter = 0;
         int firstMatrixRowcounter = 0;
         int secondMatrixColumncounter = 0;
         int secondMatrixRowcounter = 0;
-
         int sum;
-        for(int index = 0; index < row*column; index++ ){
+
+        for(int index = 0; index < row*multiplier.column; index++ ){
             sum = 0;
             for(int counter = 0; counter < column; counter++){
                 sum += matrix[firstMatrixRowcounter][firstMatrixColumncounter] * multiplier.matrix[secondMatrixRowcounter][secondMatrixColumncounter];
@@ -65,9 +65,9 @@ class Matrix{
             }
             resultData[index] = sum;
             firstMatrixColumncounter = secondMatrixRowcounter = 0;
-            secondMatrixColumncounter = (index+1) % column;
-            firstMatrixRowcounter = (index+1)/column;
+            secondMatrixColumncounter = (index+1) % multiplier.column;
+            firstMatrixRowcounter = (index+1) / multiplier.column;
         }
-        return new Matrix(row,column,resultData);
+        return new Matrix(row,multiplier.column,resultData);
     }
 }
