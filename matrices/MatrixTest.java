@@ -16,13 +16,12 @@ public class MatrixTest {
         Matrix myFirstMatrix = new Matrix(row,column,firstData);
         Matrix mySecondMatrix = new Matrix(row,column,secondData);
 
-        int[][] firstMatrix = myFirstMatrix.getMatrix();
-        int[][] secondMatrix = mySecondMatrix.getMatrix();
 
-        assertEquals(9,secondMatrix[0][0]);
-        assertEquals(5,secondMatrix[1][1]);
-        assertEquals(9,firstMatrix[2][2]);
-        assertEquals(4,firstMatrix[1][0]);
+
+        assertEquals(9,mySecondMatrix.getDataOfThePosition(0,0));
+        assertEquals(5,mySecondMatrix.getDataOfThePosition(1,1));
+        assertEquals(9,myFirstMatrix.getDataOfThePosition(2,2));
+        assertEquals(4,myFirstMatrix.getDataOfThePosition(1,0));
     }
 
     @Test
@@ -35,28 +34,32 @@ public class MatrixTest {
         Matrix myFirstMatrix = new Matrix(row,column,firstData);
         Matrix mySecondMatrix = new Matrix(row,column,secondData);
 
-        Matrix resultMatrix = myFirstMatrix.addMatrix(mySecondMatrix.getMatrix());
+        Matrix resultMatrix = myFirstMatrix.addMatrix(mySecondMatrix);
 
-        assertEquals(10,resultMatrix.getMatrix()[0][0]);
-        assertEquals(10,resultMatrix.getMatrix()[1][0]);
-        assertEquals(10,resultMatrix.getMatrix()[2][2]);
-        assertEquals(1,myFirstMatrix.getMatrix()[0][0]);
+        assertEquals(10,resultMatrix.getDataOfThePosition(0,0));
+        assertEquals(10,resultMatrix.getDataOfThePosition(1,0));
+        assertEquals(10,resultMatrix.getDataOfThePosition(2,2));
+        assertEquals(1,myFirstMatrix.getDataOfThePosition(0,0));
     }
 
-    // @Test
-    // public void multiplyTwoMatrix(){
-    //     int row = 3;
-    //     int column = 3;
-    //     int [] firstData = {1,2,3,4,6,7,5,2,1};
-    //     int [] secondData = {2,3,1,6,4,2,7,3,1};
-    //
-    //     Matrix myFirstMatrix = new Matrix(row,column,firstData);
-    //     Matrix mySecondMatrix = new Matrix(row,column,secondData);
-    //
-    //     Matrix resultMatrix = myFirstMatrix.multiplyMatrix(mySecondMatrix.getMatrix());
-    //
-    //     assertEquals(93,resultMatrix.getMatrix()[1][0]);
-    //
-    // }
+    @Test
+    public void multiplyTwoMatrix(){
+        int row = 3;
+        int column = 3;
+        int [] firstData = {1,2,3,4,6,7,5,2,1};
+        int [] secondData = {2,3,1,6,4,2,7,3,1};
+
+        Matrix myFirstMatrix = new Matrix(row,column,firstData);
+        Matrix mySecondMatrix = new Matrix(row,column,secondData);
+
+        Matrix resultMatrix = myFirstMatrix.multiplyMatrix(mySecondMatrix);
+
+        assertEquals(35,resultMatrix.getDataOfThePosition(0,0));
+        assertEquals(20,resultMatrix.getDataOfThePosition(0,1));
+        assertEquals(93,resultMatrix.getDataOfThePosition(1,0));
+
+
+
+    }
 
 }
