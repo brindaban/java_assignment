@@ -91,4 +91,31 @@ public class MatrixTest {
         assertTrue(resultMatrix.checkDataOfThePosition(10,0,1));
         assertTrue(resultMatrix.checkDataOfThePosition(13,1,0));
     }
+
+    @Test
+    public void findDeterminentOfTwoCrossTwoMatrix(){
+        int [] data = {1,2,3,4};
+
+        Matrix myMatrix = new Matrix(2,2,data);
+        int result = myMatrix.diterminent();
+        assertEquals(-2,result);
+    }
+
+    @Test
+    public void findDeterminentOfThreeCrossThreeMatrix(){
+        int [] data = {2,0,-2,0,6,-3,0,2,0};
+
+        Matrix myMatrix = new Matrix(3,3,data);
+        int result = myMatrix.diterminent();
+        assertEquals(12,result);
+    }
+
+    @Test
+    public void findDeterminentOfFourCrossFourMatrix(){
+        int [] data = {3,0,2,-1,1,2,0,-2,4,0,6,-3,5,0,2,0};
+
+        Matrix myMatrix = new Matrix(4,4,data);
+        int result = myMatrix.diterminent();
+        assertEquals(20,result);
+    }
 }
