@@ -84,9 +84,9 @@ class Matrix{
         int[][] resultMatrix = new int[totalMatrix.length-1][totalMatrix.length-1];
         for(int rowCounter=1; rowCounter<totalMatrix.length; rowCounter++){
             for(int columnCounter=0; columnCounter<totalMatrix.length; columnCounter++){
-                if(columnCounter>index)
+                if(index<columnCounter)
                    resultMatrix[rowCounter-1][columnCounter-1]=totalMatrix[rowCounter][columnCounter];
-                 else if(columnCounter<index)
+                if(index>columnCounter)
                     resultMatrix[rowCounter-1][columnCounter]=totalMatrix[rowCounter][columnCounter];
             }
         }
