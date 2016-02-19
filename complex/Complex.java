@@ -16,6 +16,10 @@ class Complex{
     }
 
     public String toString(){
+        if(imaginary==0)
+            return real+"";
+        if(real == 0)
+            return imaginary+"i";
         if(imaginary<0)
             return real+""+imaginary+"i";
         return real+"+"+imaginary+"i";
@@ -41,9 +45,19 @@ class Complex{
 
     public Complex divide(Complex multiplier){
         Complex numerator = multiply(new Complex(multiplier.real , -multiplier.imaginary));
-        Complex denominator = multiplier.multiply(new Complex(multiplier.real , -multiplier.imaginary));
-        int anotherRealNo = numerator.real/denominator.real;
-        int anotherImaginaryNo = numerator.imaginary/denominator.real;
+        int denominator = multiplier.multiply(new Complex(multiplier.real , -multiplier.imaginary)).real;
+        int anotherRealNo = numerator.real/denominator;
+        int anotherImaginaryNo = numerator.imaginary/denominator;
         return new Complex(anotherRealNo,anotherImaginaryNo);
+    }
+
+    public Complex conjugate(){
+        return new Complex(real,-imaginary);
+    }
+
+    public double getDistanceFromOriginInPolarCordinate(){
+        double distance;
+        distance = Math.sqrt((real*real)+(imaginary*imaginary));
+        return distance;
     }
 }

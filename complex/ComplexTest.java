@@ -12,6 +12,8 @@ public class ComplexTest{
         assertEquals(3,a.getRealNo());
         assertEquals(2,a.getImaginaryNo());
         assertEquals("3+2i",a.toString());
+        Complex b = new Complex(0,-2);
+        assertEquals("-2i",b.toString());
     }
 
     @Test
@@ -45,12 +47,36 @@ public class ComplexTest{
     }
 
     @Test
-    public void divideTwoComplexNo(){
+    public void divideTwoComplexNoWhichWillGiveARealNoResul(){
         Complex a = new Complex(1,4);
         Complex b = new Complex(1,4);
         Complex c = a.divide(b);
         assertEquals(1,c.getRealNo());
         assertEquals(0,c.getImaginaryNo());
-        // assertEquals("-5+14i",c.toString());
+        assertEquals("1",c.toString());
+    }
+
+    @Test
+    public void divideTwoComplexNoWhichWillGiveATotalComplexNo(){
+        Complex a = new Complex(-5,14);
+        Complex b = new Complex(1,4);
+        Complex c = a.divide(b);
+        assertEquals(3,c.getRealNo());
+        assertEquals(2,c.getImaginaryNo());
+        assertEquals("3+2i",c.toString());
+    }
+
+    @Test
+    public void giveConjugate(){
+        Complex a = new Complex(-5,14);
+        Complex conjugatedMatrix = a.conjugate();
+        assertEquals("-5-14i",conjugatedMatrix.toString());
+    }
+
+    @Test
+    public void giveDistanceOfTheComplexNoInPolarCordinatesFromOrigin(){
+        Complex a = new Complex(4,-3);
+        double distanceFromOrigin = a.getDistanceFromOriginInPolarCordinate();
+        assertEquals(5.0,distanceFromOrigin,1.1);
     }
 }
