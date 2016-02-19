@@ -117,4 +117,39 @@ class Matrix{
         }
         return new Matrix(column,row,resultMatrix);
     }
+
+    private int [][] getCofficentMatrix(int rowPosition, int columnPosition){
+        int[][] cofficentMatrix = new int[row-1][column-1];
+        for(int rowCounter=0; rowCounter<row; rowCounter++){
+            for(int columnCounter=0; columnCounter<column; columnCounter++){
+                if(rowPosition<rowCounter && columnPosition<columnCounter)
+                   cofficentMatrix[rowCounter-1][columnCounter-1]=matrix[rowCounter][columnCounter];
+                if(rowPosition>rowCounter && columnPosition<columnCounter)
+                    cofficentMatrix[rowCounter][columnCounter-1]=matrix[rowCounter][columnCounter];
+                if(rowPosition<rowCounter&&columnPosition>columnCounter)
+                    cofficentMatrix[rowCounter-1][columnCounter]=matrix[rowCounter][columnCounter];
+                if(rowPosition>rowCounter&&columnPosition>columnCounter)
+                    cofficentMatrix[rowCounter][columnCounter]=matrix[rowCounter][columnCounter];
+            }
+        }
+        return cofficentMatrix;
+
+    }
+
+    public int getSign(int rowPosition,int columnPosition){
+        if((rowPosition+columnPosition)%2==0) return 1;
+        return -1;
+    }
+
+    public Matrix adjoint(){
+        int [] resultMatrix = new int[row*column];
+        int counter = 0;
+        for(int rowCounter = 0; rowCounter<row; rowCounter++){
+            for(int columnCounter = 0; columnCounter<column; columnCounter++){
+                resultMatrix[counter] = getSign(rowCounter,columnCounter)*findDiterminent(getCofficentMatrix(rowCounter,columnCounter));
+                counter++;
+            }
+        }
+        return new Matrix(column,row,resultMatrix).transpose();
+    }
 }

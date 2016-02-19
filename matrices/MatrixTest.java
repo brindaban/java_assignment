@@ -150,6 +150,21 @@ public class MatrixTest {
         assertTrue(transposeOfMyMatrix.checkDataOfThePosition(2,1,0));
         assertTrue(transposeOfMyMatrix.checkDataOfThePosition(4,1,1));
         assertTrue(transposeOfMyMatrix.checkDataOfThePosition(6,1,2));
+    }
 
+    @Test
+    public void findAdjointOfAThreeCrossThreeMatrix(){
+        int [] data = {1,2,3,2,3,1,1,2,2};
+        Matrix myMatrix = new Matrix(3,3,data);
+        Matrix resultMatrix = myMatrix.adjoint();
+        assertTrue(resultMatrix.checkDataOfThePosition(4,0,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(2,0,1));
+        // assertTrue(resultMatrix.checkDataOfThePosition(-7,0,2));
+        // assertTrue(resultMatrix.checkDataOfThePosition(-3,1,0));
+        // assertTrue(resultMatrix.checkDataOfThePosition(-1,1,1));
+        // assertTrue(resultMatrix.checkDataOfThePosition(5,1,2));
+        // assertTrue(resultMatrix.checkDataOfThePosition(1,2,0));
+        // assertTrue(resultMatrix.checkDataOfThePosition(0,2,1));
+        // assertTrue(resultMatrix.checkDataOfThePosition(-1,2,2));
     }
 }
