@@ -97,7 +97,7 @@ public class MatrixTest {
         int [] data = {4};
 
         Matrix myMatrix = new Matrix(1,1,data);
-        int result = myMatrix.diterminent();
+        int result = myMatrix.determinant();
         assertEquals(4,result);
     }
 
@@ -106,7 +106,7 @@ public class MatrixTest {
         int [] data = {1,2,3,4};
 
         Matrix myMatrix = new Matrix(2,2,data);
-        int result = myMatrix.diterminent();
+        int result = myMatrix.determinant();
         assertEquals(-2,result);
     }
 
@@ -115,7 +115,7 @@ public class MatrixTest {
         int [] data = {2,0,-2,0,6,-3,0,2,0};
 
         Matrix myMatrix = new Matrix(3,3,data);
-        int result = myMatrix.diterminent();
+        int result = myMatrix.determinant();
         assertEquals(12,result);
     }
 
@@ -124,9 +124,27 @@ public class MatrixTest {
         int [] data = {3,0,2,-1,1,2,0,-2,4,0,6,-3,5,0,2,0};
 
         Matrix myMatrix = new Matrix(4,4,data);
-        int result = myMatrix.diterminent();
+        int result = myMatrix.determinant();
         assertEquals(20,result);
     }
+
+    @Test
+     public void matrixDeterminantTestOF10By10Matrix() {
+       int []data = {1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,
+                     1,2,3,4,5,6,7,8,9,1};
+       Matrix matrix = new Matrix (10,10,data);
+       int result = matrix.determinant();
+       assertEquals(0,result);
+     }
 
     @Test
     public void transposeOfATwoCrossTwoMatrix(){
@@ -159,12 +177,12 @@ public class MatrixTest {
         Matrix resultMatrix = myMatrix.adjoint();
         assertTrue(resultMatrix.checkDataOfThePosition(4,0,0));
         assertTrue(resultMatrix.checkDataOfThePosition(2,0,1));
-        // assertTrue(resultMatrix.checkDataOfThePosition(-7,0,2));
-        // assertTrue(resultMatrix.checkDataOfThePosition(-3,1,0));
-        // assertTrue(resultMatrix.checkDataOfThePosition(-1,1,1));
-        // assertTrue(resultMatrix.checkDataOfThePosition(5,1,2));
-        // assertTrue(resultMatrix.checkDataOfThePosition(1,2,0));
-        // assertTrue(resultMatrix.checkDataOfThePosition(0,2,1));
-        // assertTrue(resultMatrix.checkDataOfThePosition(-1,2,2));
+        assertTrue(resultMatrix.checkDataOfThePosition(-7,0,2));
+        assertTrue(resultMatrix.checkDataOfThePosition(-3,1,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(-1,1,1));
+        assertTrue(resultMatrix.checkDataOfThePosition(5,1,2));
+        assertTrue(resultMatrix.checkDataOfThePosition(1,2,0));
+        assertTrue(resultMatrix.checkDataOfThePosition(0,2,1));
+        assertTrue(resultMatrix.checkDataOfThePosition(-1,2,2));
     }
 }

@@ -1,9 +1,9 @@
 import java.util.Arrays;
 
 class Matrix{
-    private int row;
-    private int column;
-    private int [][] matrix;
+    private final int row;
+    private final int column;
+    private final int [][] matrix;
 
     public Matrix(int rowSize,int columnSize,int[]data){
         row = rowSize;
@@ -71,7 +71,7 @@ class Matrix{
         return new Matrix(row,multiplier.column,resultData);
     }
 
-    public int diterminent(){
+    public int determinant(){
         return findDiterminent(matrix);
     }
 
