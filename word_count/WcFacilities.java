@@ -1,8 +1,26 @@
+import java.io.*;
+
 class WcFacilities{
     private final String content;
 
-    public WcFacilities(String fileContent){
-        this.content = fileContent;
+    public WcFacilities(String fileName){
+        this.content = getFileContents(fileName);
+    }
+
+    private String getFileContents(String givenFile){
+        File file = new File(givenFile);
+        String fileContent = null;
+        try {
+            FileReader reader = new FileReader(file);
+            char []item = new char[(int) file.length()];
+            reader.read(item);
+            fileContent = new String(item);
+            reader.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        return fileContent;
     }
 
     public int noOfChar(){
