@@ -1,5 +1,3 @@
-import java.io.*;
-
 class WcUtil{
     private final String content;
 
