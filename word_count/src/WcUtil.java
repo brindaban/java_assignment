@@ -16,4 +16,9 @@ class WcUtil{
     public int countWord(){
         return content.split("\\ ").length;
     }
+
+    public String giveAllInformation(){
+        return "\t"+countLine()+"\t"+countWord()+"\t"+countChar();
+    }
+
 }
