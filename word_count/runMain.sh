@@ -1,2 +1,2 @@
-javac -cp src:out/WC -d out  WC.java
-java -cp out/ WC $@
+javac -cp src:out/src.WC -d out  src.WC.java
+java -cp out/ src.WC $@
