@@ -4,6 +4,5 @@ public class NameTest {
     @Test
     public void testName() throws Exception {
 
-
     }
 }

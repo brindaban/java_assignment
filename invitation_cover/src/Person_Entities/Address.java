@@ -11,4 +11,8 @@ public class Address {
         this.country = country;
     }
 
+    public String countryAtTheEnd() {
+        return ", " + country;
+    }
+
 }

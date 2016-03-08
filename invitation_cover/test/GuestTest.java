@@ -7,15 +7,31 @@ import org.junit.Test;
 public class GuestTest {
     @Test
     public void testTostringReturnNameInCasualFormat() throws Exception {
-        Guest myGuest = new Guest(new Name("Brindaban","Patra"),"Male","21",new Address("Ghatal","West Bengal","India"));
-        String casualFormattedName = myGuest.toString("casual");
-        Assert.assertEquals("Mr Brindaban Patra",casualFormattedName);
+        Guest myGuest = new Guest(new Name("Brindaban", "Patra"), "Male", "21", new Address("Ghatal", "West Bengal", "India"));
+        Assert.assertEquals("Mr Brindaban Patra", myGuest.toString("casual"));
     }
 
     @Test
     public void testTostringReturnsNameInFormalFormat() throws Exception {
-        Guest myGuest = new Guest(new Name("Sampriti","Patra"),"Female","21",new Address("Ghatal","West Bengal","India"));
-        String formalFormattedName = myGuest.toString("formal");
-        Assert.assertEquals("Ms Patra, Sampriti",formalFormattedName);
+        Guest myGuest = new Guest(new Name("Sampriti", "Patra"), "Female", "21", new Address("Ghatal", "West Bengal", "India"));
+        Assert.assertEquals("Ms Patra, Sampriti", myGuest.toString("formal"));
+    }
+
+    @Test
+    public void testNameWithAgeReturnNameWithTheAgeOfGivenFormat() throws Exception {
+        Guest myGuest = new Guest(new Name("Sampriti", "Patra"), "Female", "21", new Address("Ghatal", "West Bengal", "India"));
+        Assert.assertEquals("Ms Sampriti Patra, 21", myGuest.nameWithAge("casual"));
+    }
+
+    @Test
+    public void testNameWithAgeAndCountryReturnNameWithAgeAndCountryOfGivenFormat() throws Exception {
+        Guest myGuest = new Guest(new Name("Sampriti", "Patra"), "Female", "21", new Address("Ghatal", "West Bengal", "India"));
+        Assert.assertEquals("Ms Sampriti Patra, India, 21", myGuest.nameWithAgeAndCountry("casual"));
+    }
+
+    @Test
+    public void testIsAboveWillReturnTrueIfTheGuestIsOlderOrAsOldAsGivenAge() throws Exception {
+        Guest myGuest = new Guest(new Name("Brindaban", "Patra"), "Male", "21", new Address("Ghatal", "West Bengal", "India"));
+        Assert.assertTrue(myGuest.isAbove(20));
     }
 }

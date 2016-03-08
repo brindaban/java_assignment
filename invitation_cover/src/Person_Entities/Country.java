@@ -18,7 +18,7 @@ public class Country {
         guestList.add(guest);
     }
 
-    public int noOfGuestFromTheCountry(){
+    public int noOfGuestFromTheCountry() {
         return guestList.size();
     }
 
@@ -34,7 +34,7 @@ public class Country {
                 || Objects.equals(((Country) anotherObject).name, name);
     }
 
-    private String delimiter(){
+    private String delimiter() {
         return ", ";
     }
 
@@ -48,15 +48,15 @@ public class Country {
         return allGuest.toArray(allNames);
     }
 
-    public String[] getAllWithTheAge(int age,String format){
+    public String[] getAllWithTheAge(int age, String format) {
         List<String> allGuest = new ArrayList<>();
         Guest[] guests = new Guest[guestList.size()];
         guestList.toArray(guests);
-        for (Guest eachGuest:guests) {
+        for (Guest eachGuest : guests) {
             if (eachGuest.isAbove(age))
-                allGuest.add(eachGuest.nameWithAgeAndCountry(format,name));
+                allGuest.add(eachGuest.nameWithAgeAndCountry(format));
         }
-        String [] allNameWithAgeAndCoutry = new String[allGuest.size()];
+        String[] allNameWithAgeAndCoutry = new String[allGuest.size()];
         return allGuest.toArray(allNameWithAgeAndCoutry);
     }
 

@@ -7,12 +7,12 @@ public class DataRead {
     String fileName;
     String[] data;
 
-    public DataRead(String fileName) throws Exception{
+    public DataRead(String fileName) throws Exception {
         this.fileName = fileName;
         data = readDataFromFile();
     }
 
-    private String[] readDataFromFile()throws Exception{
+    private String[] readDataFromFile() throws Exception {
         File file = new File(this.fileName);
         char[] data = new char[(int) file.length()];
         FileReader reader = new FileReader(file);
@@ -21,7 +21,7 @@ public class DataRead {
         return content.split("\n");
     }
 
-    public String[] getdata(){
+    public String[] getdata() {
         return this.data;
     }
 

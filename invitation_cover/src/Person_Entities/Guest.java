@@ -13,24 +13,24 @@ public class Guest {
         this.address = address;
     }
 
-    private String delimeter(){
-        return " ,";
+    private String delimeter() {
+        return ", ";
     }
 
     public String toString(String option) {
         return this.name.withPrefix(gender, option);
     }
 
-    public boolean isAbove(int age){
+    public boolean isAbove(int age) {
         return Integer.parseInt(this.age) >= age;
     }
 
-    public String nameWithAge(String option){
-        return this.name.withPrefix(gender,option)+delimeter()+age;
+    public String nameWithAge(String option) {
+        return this.name.withPrefix(gender, option) + delimeter() + age;
     }
 
-    public String nameWithAgeAndCountry(String option,String country){
-        return this.name.withPrefix(gender,option)+delimeter()+country+delimeter()+age;
+    public String nameWithAgeAndCountry(String option) {
+        return this.name.withPrefix(gender, option) + address.countryAtTheEnd() + delimeter() + age;
     }
 
 }

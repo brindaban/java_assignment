@@ -20,7 +20,7 @@ public class GuestList {
         return addGuestAccordingToCountry(newCountry, guest);
     }
 
-    public void addAllGuest(String[] splittedData){
+    public void addAllGuest(String[] splittedData) {
         for (String eachSplittedData : splittedData) {
             String[] individual = eachSplittedData.split(",");
             add(individual[0], individual[1], individual[2], individual[3], individual[4], individual[5], individual[6]);
@@ -35,12 +35,12 @@ public class GuestList {
         return list.add(guest);
     }
 
-    public String[] getAllGuestNameAsFormat(String format){
+    public String[] getAllGuestNameAsFormat(String format) {
         List<String> allGuestWithTheAge = new ArrayList<>();
         for (Guest eachGuest : list) {
-                allGuestWithTheAge.add(eachGuest.toString(format));
+            allGuestWithTheAge.add(eachGuest.toString(format));
         }
-        String [] allGuest = new String[allGuestWithTheAge.size()];
+        String[] allGuest = new String[allGuestWithTheAge.size()];
         return allGuestWithTheAge.toArray(allGuest);
     }
 
@@ -51,24 +51,22 @@ public class GuestList {
         int position = countries.indexOf(countryToRetrieve);
         return countries.get(position).getAll(format);
     }
-    public String[] getAllGuestWithCountryAboveTheGivenAge(String country,int age,String format){
+
+    public String[] getAllGuestWithCountryAboveTheGivenAge(String country, int age, String format) {
         Country countryToRetrieve = new Country(country);
         if (!countries.contains(countryToRetrieve))
             return new String[0];
         int position = countries.indexOf(countryToRetrieve);
-        return countries.get(position).getAllWithTheAge(age,format);
+        return countries.get(position).getAllWithTheAge(age, format);
     }
 
-    public String [] getAllGuestAboveTheGivenAge(int age,String format){
+    public String[] getAllGuestAboveTheGivenAge(int age, String format) {
         List<String> allGuestWithTheAge = new ArrayList<>();
         for (Guest eachGuest : list) {
             if (eachGuest.isAbove(age))
                 allGuestWithTheAge.add(eachGuest.nameWithAge(format));
         }
-        String [] allGuest = new String[allGuestWithTheAge.size()];
+        String[] allGuest = new String[allGuestWithTheAge.size()];
         return allGuestWithTheAge.toArray(allGuest);
     }
-
-
-
 }

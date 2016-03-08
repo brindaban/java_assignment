@@ -27,7 +27,7 @@ public class Name {
             name = casualName();
         else
             name = formalName();
-        return addPrefix(name,gender);
+        return addPrefix(name, gender);
     }
 
     private String addPrefix(String name, String gender) {
