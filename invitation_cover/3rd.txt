@@ -1,0 +1,17 @@
+The Royal Family has decided that alcohol will be served at the birthday party. In order to ensure the legality of the proceedings, they have decided to dispense vouchers to all invitees above the age of 20.
+
+This means that your software has to have the ability to filter people above a certain age.
+
+Of course, the Royal Family also wishes to be able to apply multiple filters at the same time. Meaning, they would like to see all people of legal drinking age from a specific country.
+
+The filtered results, as before, can be viewed with formal or informal addressing.
+
+Ex:
+
+Mr John Smith, Bangladesh, 20
+Ms Jane Doe, Bangladesh, 30
+
+or
+
+Mr Smith, John, Bangladesh, 20
+Ms Doe, Jane, Bangladesh, 30

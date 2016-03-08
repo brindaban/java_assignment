@@ -1,0 +1,25 @@
+PRINTING INVITATION LABLE:
+
+given:
+    1.  A file will be given with the data, the data formatted like
+
+        FirstName   LastName Gender Age City State  Country
+        Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania
+        Carlos,Johns,Male,35,West Shanna,South Carolina,Bangladesh
+
+------------------------------------------------------------------------------------------------------
+
+requirments:
+    1. User will give the file Name and option.[nameFormat has to provide as an option , it is necessary]
+       a> FORMAT:  appName -option fileName[fileName will be at last]
+        like:   a> PrintLables -nameFormat casual -file records
+
+       b> Format appName -CountryName FileName
+        like:        b> PrintLables -country Bangladesh -nameFormat formal -file records
+                 or> PrintLables -nameFormat formal -country Bangladesh -file records
+
+       c> Format appName CountryName Age FileName
+        like:        c> PrintLables -country Bangladesh -nameFormat formal -age 23 -file records
+                 or PrintLables -age 23 -country Bangladsh -nameFormat formal -file records
+
+
