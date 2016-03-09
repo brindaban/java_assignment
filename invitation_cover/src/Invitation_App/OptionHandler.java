@@ -36,7 +36,6 @@ public class OptionHandler {
             String countryOption = commandLineAgruments[countryCommandIndex + 1];
             int age = Integer.parseInt(commandLineAgruments[ageCommandIndex + 1]);
             result = list.getAllGuestWithCountryAboveTheGivenAge(countryOption, age, nameFormat);
-            return;
         }
     }
 
@@ -50,10 +49,13 @@ public class OptionHandler {
         getUserRequirments();
     }
 
+    public String[] ultimateResult(){
+        return result;
+    }
+
     public void printResult() {
         for (String guest : result) {
             System.out.println(guest);
         }
     }
-
 }

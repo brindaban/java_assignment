@@ -6,18 +6,29 @@ import java.util.List;
 public class GuestList {
     private List<Guest> list;
     private List<Country> countries;
+    private int noOfGuest;
 
     public GuestList() {
         list = new ArrayList<>();
         countries = new ArrayList<>();
+        noOfGuest = 0;
     }
 
-    public boolean add(String firstName, String lastName, String gender, String age, String city, String state, String country) {
+    private boolean add(String firstName, String lastName, String gender, String age, String city, String state, String country) {
         Name name = new Name(firstName, lastName);
         Address address = new Address(city, state, country);
         Guest guest = new Guest(name, gender, age, address);
         Country newCountry = new Country(country);
         return addGuestAccordingToCountry(newCountry, guest);
+    }
+
+    private boolean addGuestAccordingToCountry(Country newCountry, Guest guest) {
+        if (!countries.contains(newCountry))
+            countries.add(newCountry);
+        int position = countries.indexOf(newCountry);
+        countries.get(position).add(guest);
+        noOfGuest++;
+        return list.add(guest);
     }
 
     public void addAllGuest(String[] splittedData) {
@@ -27,12 +38,9 @@ public class GuestList {
         }
     }
 
-    private boolean addGuestAccordingToCountry(Country newCountry, Guest guest) {
-        if (!countries.contains(newCountry))
-            countries.add(newCountry);
-        int position = countries.indexOf(newCountry);
-        countries.get(position).add(guest);
-        return list.add(guest);
+
+    public int getNoOfGuest(){
+        return noOfGuest;
     }
 
     public String[] getAllGuestNameAsFormat(String format) {

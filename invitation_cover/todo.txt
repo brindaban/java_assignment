@@ -12,14 +12,29 @@ given:
 requirments:
     1. User will give the file Name and option.[nameFormat has to provide as an option , it is necessary]
        a> FORMAT:  appName -option fileName[fileName will be at last]
-        like:   a> PrintLables -nameFormat casual -file records
+        like:   1> PrintLables -nameFormat casual -file records
 
-       b> Format appName -CountryName FileName
-        like:        b> PrintLables -country Bangladesh -nameFormat formal -file records
+           o/p ->Ms Judah Brakus
+                 Mr Ressie Kutch
+        ---------------------------------------------------------------------------------------------------
+       b> FORMAT: appName -CountryName FileName
+        like:    1> PrintLables -country Bangladesh -nameFormat formal -file records
                  or> PrintLables -nameFormat formal -country Bangladesh -file records
 
-       c> Format appName CountryName Age FileName
-        like:        c> PrintLables -country Bangladesh -nameFormat formal -age 23 -file records
+           o/p ->Ms Jacobi, Lavina, Bangladesh
+                 Mr Carroll, Callie, Bangladesh
+
+        ---------------------------------------------------------------------------------------------------
+       c> FORMAT: appName CountryName Age FileName
+        like:   1> PrintLables -country Bangladesh -nameFormat formal -age 23 -file records
                  or PrintLables -age 23 -country Bangladsh -nameFormat formal -file records
 
+           o/p ->Mr Dare, Ilene, Bangladesh, 34
+                 Ms Bednar, Nova, Bangladesh, 21
+        ---------------------------------------------------------------------------------------------------
+        d> FORMAT: appName Age FileName
+        like:   1> PrintLables -nameFormat casual -age 20 -file records
+                or PrintLables -age 20 -country Bangladesh -file records
 
+        o/p -Ms Jeremy Erdman, 33
+             Mr Jaclyn Bartoletti, 22
